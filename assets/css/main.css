@@ -2084,8 +2084,6 @@ input, select, textarea {
 
 		.image.center {
 			justify-content: center;
-			margin: 0 2em 2em 0;
-			top: 1em;
 		}
 
 		.image.left {
