@@ -2082,6 +2082,12 @@ input, select, textarea {
 			display: block;
 		}
 
+		.image.center {
+			justify-content: center;
+			margin: 0 2em 2em 0;
+			top: 1em;
+		}
+
 		.image.left {
 			float: left;
 			margin: 0 2em 2em 0;
@@ -2098,7 +2104,7 @@ input, select, textarea {
 			max-width: 40%;
 		}
 
-			.image.left img, .image.right img {
+			.image.left img, .image.right img, .image.center img {
 				width: 100%;
 			}
 
