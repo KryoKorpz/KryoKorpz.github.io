@@ -1,10 +1,10 @@
 name: Deploy
 on:
   push:
-    branches: port/nextjs
+    branches: master
   pull_request:
-    branches: port/nextjs
-
+    branches: master
+    
 jobs:
   deploy:
     name: Deploy
