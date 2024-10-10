@@ -1,9 +1,0 @@
-{
-  "lint": {
-    "include": ["my-site"],
-    "exclude": ["assets", "images", "public", "*.html", "**/_fresh/*"],
-    "rules": {
-      "tags": ["recommended"]
-    }
-  }
-}

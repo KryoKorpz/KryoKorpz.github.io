@@ -10,6 +10,7 @@
     "update": "deno run -A -r https://fresh.deno.dev/update ."
   },
   "lint": {
+    "exclude": ["assets", "images", "public", "*.html"],
     "rules": {
       "tags": [
         "fresh",
