@@ -31,4 +31,4 @@ jobs:
         with:
           project: "fracture"
           entrypoint: "main.ts"
-          root: "fracture"
+          root: "./fracture"
