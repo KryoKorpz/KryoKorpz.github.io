@@ -1,7 +1,7 @@
 {
   "lint": {
     "include": ["my-site"],
-    "exclude": ["assets", "images", "public", "*.htm", "my-site/.next"],
+    "exclude": ["assets", "images", "public", "*.html", "**/_fresh/*"],
     "rules": {
       "tags": ["recommended"]
     }
