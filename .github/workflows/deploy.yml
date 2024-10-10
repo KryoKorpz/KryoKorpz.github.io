@@ -31,4 +31,4 @@ jobs:
         with:
           project: "lazy-hedgehog-58"
           entrypoint: "main.ts"
-          root: "./krysis-site"
+          root: "krysis-site"
