@@ -1,61 +1,73 @@
 import { useState } from 'preact/hooks';
-import { createContext } from 'preact';
-import 'jsr:@std/dotenv/load';
 
-const LlamaContext = createContext('llama');
 export default function Llama() {
   const [promptInput, setPromptInput] = useState('');
+  const [narratorInput, setNarratorInput] = useState('');
   const [story, setStory] = useState('');
-  const narrator = Deno.env.get('WORKER_AI_STORY_NARRATOR');
+  const [promptInputBoolean, setPromptInputBoolean] = useState(false);
+  const narratorDefault =
+    'You are a powerful sexy succubus that uses the pleasures of flesh to corrupt heroes';
+
   const onSubmit = async (event: any) => {
     console.log('onsbumit Response');
 
     event.preventDefault();
-    const response = await fetch('/api/llama', {
-      method: 'POST',
-      body: JSON.stringify({
-        model: '@cf/meta/llama-3-8b-instruct',
-        input: {
-          messages: [
-            {
-              role: 'system',
-              content: narrator,
-            },
-            {
-              role: 'user',
-              content: promptInput,
-            },
-          ],
-        },
-      }),
-    });
-    console.log('pre Response');
-    console.log(response);
-    const { result } = await response.json();
-    // const mockResponse = {
-    //   'result': {
-    //     'response':
-    //       'The memories. It was a time when mortals still dared to trifle with the forces of darkness. I had been dwelling in the city of Ashkirk, where my whispered promises of power and pleasure had already begun to corrupt the hearts of many.\n\nOne brave fool, a young warrior named Eryndor Thorne, had grown suspicious of my influence. He had witnessed the strange occurrences that followed my presence: the unexplained fires, the eerie whispers in the night, and the inexplicable covetousness that seemed to spread like a plague.\n\nEryndor had gathered a small band of companions, each with their own reasons for resisting my corruption. There was Lyra, a skilled huntress with a warrior\'s spirit; Arin, a scholar who had studied the ancient tomes of forbidden knowledge; and Jax, a mysterious sorcerer with a talent for weaving powerful spells.\n\nI had been toying with them, using my charms to lure them deeper into the shadows. I had whispered sweet nothings in their ears, promised them untold power and glory, and even appeared to them in visions, tempting them with promises of immortality.\n\nBut Eryndor was not so easily swayed. He had a spark within him, a flame of righteousness that refused to be extinguished. As we faced each other in the crumbling ruins of an ancient temple, I could sense his determination.\n\n"You are a servant of the darkness," Eryndor declared, his voice firm and unyielding. "And I will not let you cast your shadow over this city."\n\nI laughed, the sound echoing off the stone walls. "You are no match for me, mortal," I sneered. "I have the power to manipulate the very fabric of reality."\n\nEryndor smiled, his eyes glinting with defiance. "I may not know the secrets of the universe, but I know this: that you are not a god, and that your power is not infinite. And I will not back down."\n\nWith a wave of his hand, Eryndor summoned a blast of holy energy that sent me stumbling backward. My powers, fueled by the darkness, were no match for the pure however, and I was forced to retreat.\n\nAs I vanished into the shadows, I could feel my influence begin to wane. The whispers in the night grew silent, the fires that had burned with malevolent intent dying out, and the covetousness that had spread like a plague began to recede.\n\nIn that',
-    //   },
-    //   'success': true,
-    //   'errors': [],
-    //   'messages': [],
-    // };
-    // return setStory(mockResponse.result.response);
-    return setStory(result.response);
+    // const response = await fetch('/api/llama', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     model: '@cf/meta/llama-3-8b-instruct',
+    //     input: {
+    //       messages: [
+    //         {
+    //           role: 'system',
+    //           content: narratorInput || narratorDefault,
+    //         },
+    //         {
+    //           role: 'user',
+    //           content: promptInput,
+    //         },
+    //       ],
+    //     },
+    //   }),
+    // });
+
+    // const { result } = await response.json();
+    const mockResponse = {
+      'result': {
+        'response':
+          "In the land of Eridoria, where the sun dipped into the horizon and painted the sky with hues of crimson and gold, a brave hero named Eryndor Thorne resided. He was renowned for his unwavering courage, a true champion of justice, and a defender of the innocent. His sword, forged from the metals of the gods, shone with a light that illuminated the darkest of paths.\n\nEryndor roamed the realm, facing numerous trials and vanquishing fearsome beasts. His legend grew, and his name became synonymous with bravery and honor. However, as he delved deeper into the mysteries of the world, he began to notice something peculiar. The folk he saved, the women he protected, and even the gods themselves would often gaze at him with a strange, longing intensity.\n\nUnbeknownst to Eryndor, the whispers of a wicked succubus, known only as Lyra, had reached the ears of the gods. She was a mistress of seduction, a weaver of dreams, and a corruptor of heroes. Lyra had been imprisoned for centuries, bound by powerful spells and incantations. However, as Eryndor's fame spread, Lyra's influence began to seep into the world.\n\nOne fateful eve, as the hero Eryndor rested in a secluded glade, Lyra's dark magic enveloped him. Her whispers entered his mind, awakening a deep, primal desire within him. Eryndor felt an intense longing, as if he were being drawn to a siren's song. The succubus's presence awakened a part of him he never knew existed, a pleasurable, almost euphoric sensation that he couldn't ignore.\n\nAs the hero succumbed to Lyra's charms, his body began to shift, his muscles rippling beneath his armor like a living flame. His sword, now transformed into a pair of delicate, yet deadly, talons, gleamed with a fiery hue. His eyes, once bright as the stars, now burned with an emerald intensity, reflecting the succubus's own ethereal beauty.\n\nEryndor's transformation was complete. He was no longer a mortal hero, but a succubus, a creature of the night, bound to Lyra's will. The consciousness of the hero still lingered, trapped within the succubus's mind, as a constant reminder of his former life.\n\nLyra, pleased with her handiwork, revealed",
+      },
+      'success': true,
+      'errors': [],
+      'messages': [],
+    };
+    return setStory(mockResponse.result.response);
+    // return setStory(result.response);
   };
-  const onChangeHandler = (event: any) => {
+  const onChangeHandlerPrompt = (event: any) => {
+    setPromptInputBoolean(true);
     setPromptInput(event.target.value);
   };
+  const onChangeHandlerNarrator = (event: any) => {
+    setNarratorInput(event.target.value);
+  };
+
   return (
     <div>
       <form onSubmit={onSubmit}>
         <input
           type='text'
           value={promptInput}
-          onChange={onChangeHandler}
+          onChange={onChangeHandlerPrompt}
         />
-        <button type='submit'>Submit</button>
+      </form>
+      <form onSubmit={onSubmit}>
+        <input
+          type='text'
+          value={narratorInput}
+          onChange={onChangeHandlerNarrator}
+        />
+        <button disabled={!promptInputBoolean} type='submit'>Submit</button>
       </form>
       <div>
         <p>new</p>
