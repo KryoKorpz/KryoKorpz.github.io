@@ -1,18 +1,16 @@
-import "jsr:@std/dotenv/load";
+import type { FreshContext, Handlers } from '$fresh/server.ts';
 
-export async function run(model: any, input: any) {
-    console.log('Run Forest')
+export const handler: Handlers = {
+  async POST(req, ctx: FreshContext) {
+    const { model, input } = await req.json();
     const response = await fetch(
-        `https://api.cloudflare.com/client/v4/accounts/055de81bd1ed5b4b8b9103ddfe3886a5/ai/run/${model}`,
-        {
-            headers: { Authorization: `Bearer ${Deno.env.get("WorkerAIToken")}` },
-            method: "POST",
-            body: JSON.stringify(input),
-        }
+      `https://api.cloudflare.com/client/v4/accounts/055de81bd1ed5b4b8b9103ddfe3886a5/ai/run/${model}`,
+      {
+        headers: { Authorization: `Bearer ${Deno.env.get('WORKER_AI_TOKEN')}` },
+        method: 'POST',
+        body: JSON.stringify(input),
+      },
     );
-
-    console.log(response)
-    const result = await response.json();
-    console.log(result)
-    return result;
-}
+    return response;
+  },
+};
