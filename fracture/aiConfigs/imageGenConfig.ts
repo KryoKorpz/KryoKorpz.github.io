@@ -1,5 +1,19 @@
 import { WorkerAiGenModel } from './aiConfig.ts';
-export const mockResponse = 'ee5fe0b0-8865-11ef-b488-295c63c5711c';
+export const mockResponse = async () => {
+  const file = await Deno.readFile(
+    './static/ee5fe0b0-8865-11ef-b488-295c63c5711c.png',
+  );
+
+  const unitArray = [
+    ...new Uint8Array(file),
+  ];
+  // const imgBlob = new Blob([file]);
+  // const imgUrl = URL.createObjectURL(imgBlob);
+  // console.log(imgUrl);
+  // const imgUrl = URL.createObjectURL([file]);
+  // return new Response(unitArray);
+  return new Response();
+};
 export const imageGenModels: WorkerAiGenModel[] = [
   {
     id: '@cf/lykon/dreamshaper-8-lcm',

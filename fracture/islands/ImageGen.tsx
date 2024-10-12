@@ -20,10 +20,18 @@ export default function ImageGen(props: GenProps) {
         },
       }),
     });
-    const imageUuid = await response.json();
-    return setImagePath(`/${imageUuid}.png`);
+    // const imgJson = await response.json();
+    // console.log(imgJson);
+    const newImgBlob = new Blob([]);
+    console.log(newImgBlob);
+    const imgUrl = URL.createObjectURL(await response.blob());
+    console.log(imgUrl);
+    return setImagePath(`${imgUrl}`);
+
+    // return setImagePath(`/${imageUuid}.png`);
   };
   const onChangeHandlerPrompt = (event: any) => {
+    event.preventDefault();
     setPromptInputBoolean(true);
     setPromptInput(event.target.value);
   };

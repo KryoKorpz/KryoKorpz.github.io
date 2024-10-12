@@ -6,15 +6,16 @@ interface ImageProps {
 
 export default function Image(props: ImageProps) {
   const [imgSrc, setImgSrc] = useState('');
-  useEffect(() => {
-    return setImgSrc(props.src);
-  }, [props.src]);
+  // useEffect(() => {
+  //   return setImgSrc(props.src);
+  // }, [props.src]);
+  console.log(props.src);
   return (
-    <div>
+    <>
       <img
-        src={imgSrc}
+        src={props.src}
         alt={'AI no worky'}
       />
-    </div>
+    </>
   );
 }

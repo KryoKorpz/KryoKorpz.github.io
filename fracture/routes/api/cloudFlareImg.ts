@@ -2,12 +2,11 @@ import type { FreshContext, Handlers } from '$fresh/server.ts';
 import { mockResponse } from '../../aiConfigs/imageGenConfig.ts';
 import * as uuid from 'jsr:@std/uuid';
 
-const fileLoading = new Map();
-async function writeFile(imgId: string, response: Response) {
+function writeFile(imgId: string, response: Response) {
   if (response.body) {
     Deno.writeFile(`./static/${imgId}.png`, response.body);
-    return fileLoading.delete(imgId);
   }
+  return;
 }
 
 export const handler: Handlers = {
@@ -23,7 +22,7 @@ export const handler: Handlers = {
       ];
     }
     if (Deno.env.get('NODE_ENV') === 'development') {
-      return Response.json(mockResponse);
+      return mockResponse();
     }
     try {
       const response = await fetch(
@@ -36,12 +35,11 @@ export const handler: Handlers = {
           body: JSON.stringify(inputs),
         },
       );
+
       const imgId = uuid.v1.generate();
-      fileLoading.set(imgId, writeFile);
-      if (fileLoading.has(imgId)) {
-        await writeFile(imgId, response);
-      }
-      return Response.json(imgId);
+      await writeFile(imgId, response);
+
+      return response;
     } catch (error) {
       throw error as any;
     }
