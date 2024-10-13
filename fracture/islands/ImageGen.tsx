@@ -18,8 +18,7 @@ export default function ImageGen(props: GenProps) {
         },
       }),
     });
-    const imgUrl = URL.createObjectURL(await response.blob());
-    return setImagePath(imgUrl);
+    return setImagePath(URL.createObjectURL(await response.blob()));
   };
   const onChangeHandlerPrompt = (event: any) => {
     event.preventDefault();

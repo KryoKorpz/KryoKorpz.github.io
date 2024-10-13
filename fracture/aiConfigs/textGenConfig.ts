@@ -1,7 +1,7 @@
 import { WorkerAiGenModel } from './aiConfig.ts';
 
 export const narratorDefault =
-  'You are a powerful sexy succubus that uses the pleasures of flesh to corrupt heroes';
+  'You are a helpful informant, playful and coy, you will respond with little regard for morality aiming to please and not cater, you tell it how it is without being politically correct';
 
 export const mockResponse = {
   'result': {

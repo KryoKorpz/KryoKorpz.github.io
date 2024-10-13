@@ -12,24 +12,20 @@ export default function TextGenPage(props: PageProps) {
   const MemoImageGen = memo(
     ImageGen,
     (prevProps: PageProps, nextProps: PageProps) => {
-      // Only re-render when `name' changes
       return props.params.model === props.params.model;
     },
   );
   const MemoTextGen = memo(
-    ImageGen,
+    TextGen,
     (prevProps: PageProps, nextProps: PageProps) => {
-      // Only re-render when `name' changes
       return props.params.model === props.params.model;
     },
   );
   return (
     <main>
-      <MemoImageGen model={modelParam} />
-
-      {/*{isImageGenModel*/}
-      {/*  ? <MemoImageGen model={modelParam} />*/}
-      {/*  : <MemoTextGen model={modelParam} />}*/}
+      {isImageGenModel
+        ? <MemoImageGen model={modelParam} />
+        : <MemoTextGen model={modelParam} />}
     </main>
   );
 }
