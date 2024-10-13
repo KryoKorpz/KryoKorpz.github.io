@@ -154,15 +154,6 @@
 		&:hover {
 			border-bottom-color: transparent;
 		}
-		/* Give links pointing to the current page a green color */
-		a[data-current] {
-			color: green;
-		}
-
-		/* Color all ancestor links of the current page the color peachpuff */
-		a[data-ancestor] {
-			color: peachpuff;
-		}
 	}
 
 	strong, b {
