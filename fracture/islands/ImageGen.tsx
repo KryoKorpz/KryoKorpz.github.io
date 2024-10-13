@@ -4,9 +4,7 @@ import Image from './image.tsx';
 
 export default function ImageGen(props: GenProps) {
   const [promptInput, setPromptInput] = useState('');
-  const [imagePath, setImagePath] = useState(
-    '/33d0c460-886c-11ef-bc9e-3389eef50ee5.png',
-  );
+  const [imagePath, setImagePath] = useState('');
   const [promptInputBoolean, setPromptInputBoolean] = useState(false);
 
   const onSubmit = async (event: any) => {
@@ -20,15 +18,8 @@ export default function ImageGen(props: GenProps) {
         },
       }),
     });
-    // const imgJson = await response.json();
-    // console.log(imgJson);
-    const newImgBlob = new Blob([]);
-    console.log(newImgBlob);
     const imgUrl = URL.createObjectURL(await response.blob());
-    console.log(imgUrl);
-    return setImagePath(`${imgUrl}`);
-
-    // return setImagePath(`/${imageUuid}.png`);
+    return setImagePath(imgUrl);
   };
   const onChangeHandlerPrompt = (event: any) => {
     event.preventDefault();
@@ -68,7 +59,8 @@ export default function ImageGen(props: GenProps) {
         </a>
       </div>
       <div>
-        <Image src={imagePath} />
+        {imagePath &&
+          <Image src={imagePath} />}
       </div>
     </div>
   );

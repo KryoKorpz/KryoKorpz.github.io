@@ -1,13 +1,5 @@
 import type { FreshContext, Handlers } from '$fresh/server.ts';
 import { mockResponse } from '../../aiConfigs/imageGenConfig.ts';
-import * as uuid from 'jsr:@std/uuid';
-
-function writeFile(imgId: string, response: Response) {
-  if (response.body) {
-    Deno.writeFile(`./static/${imgId}.png`, response.body);
-  }
-  return;
-}
 
 export const handler: Handlers = {
   async POST(req, ctx: FreshContext) {
@@ -35,10 +27,6 @@ export const handler: Handlers = {
           body: JSON.stringify(inputs),
         },
       );
-
-      const imgId = uuid.v1.generate();
-      await writeFile(imgId, response);
-
       return response;
     } catch (error) {
       throw error as any;
