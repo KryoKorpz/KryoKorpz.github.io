@@ -1,33 +1,4 @@
-import type { PageProps } from '$fresh/server.ts';
-
 export default function NavBar() {
-  const activeMap = {
-    Home: true,
-    TextGen: false,
-    Fracture: false,
-  };
-  // switch (props.params.url) {
-  //   case ('/'):
-  //     activeMap.home = true;
-  //     activeMap.TextGen = false;
-  //     activeMap.Fracture = false;
-  //     break;
-  //   case ('/textGen'):
-  //     activeMap.home = false;
-  //     activeMap.TextGen = true;
-  //     activeMap.Fracture = false;
-  //     break;
-  //   case ('/fracture'):
-  //     activeMap.home = false;
-  //     activeMap.TextGen = false;
-  //     activeMap.Fracture = true;
-  //     break;
-  //   default: {
-  //     activeMap.home = true;
-  //     activeMap.TextGen = false;
-  //     activeMap.Fracture = false;
-  //   }
-  // }
   return (
     <nav className='bg-gray-800'>
       <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
