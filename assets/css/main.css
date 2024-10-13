@@ -141,8 +141,8 @@ input, select, textarea {
 		-ms-transition: color 0.2s ease, border-bottom-color 0.2s ease;
 		transition: color 0.2s ease, border-bottom-color 0.2s ease;
 		border-bottom: dotted 1px;
-		color: inherit;
-		text-decoration: none;
+		color: blue;
+		text-decoration: underline;
 	}
 
 		a:hover {
@@ -2765,7 +2765,6 @@ input, select, textarea {
 			.spotlight .content {
 				padding: 3em 2em 1em 2em ;
 			}
-
 		}
 
 /* Wrapper */
