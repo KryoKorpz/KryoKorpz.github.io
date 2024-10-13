@@ -1,6 +1,5 @@
 import { WorkerAiGenModel } from '../aiConfigs/aiConfig.ts';
 import { useState } from 'preact/hooks';
-import { Button } from '../components/Button.tsx';
 
 interface ModelSelectProps {
   models: WorkerAiGenModel[];
@@ -36,7 +35,12 @@ export default function ModelSelect(props: ModelSelectProps) {
           ))}
         </select>
         {selectedModel && <p>{selectedModel.description}</p>}
-        <Button type='submit'>Load Model</Button>
+        <button
+          type='submit'
+          className='rounded-md border-2 w-24 m-3'
+        >
+          Load Model
+        </button>
       </form>
     </div>
   );
