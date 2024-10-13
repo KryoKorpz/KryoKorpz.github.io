@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Give links pointing to the current page a green color */
+a[data-current] {
+    border-radius: 0.375rem;
+    background-color: rgb(84, 84, 85);
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+    font-weight: 500;
+    color: #aaaaaa;
+    padding-left: 0.75rem; /* 12px */
+    padding-right: 0.75rem; /* 12px */
+    padding-top: 0.5rem; /* 8px */
+    padding-bottom: 0.5rem; /* 8px */
+}
+/* Color all ancestor links of the current page the color peachpuff */
+a[data-ancestor] {
+    border-radius: 0.375rem;
+    background-color: rgb(84, 84, 85);
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+    font-weight: 500;
+    color: #aaaaaa;
+    padding-left: 0.75rem; /* 12px */
+    padding-right: 0.75rem; /* 12px */
+    padding-top: 0.5rem; /* 8px */
+    padding-bottom: 0.5rem; /* 8px */
+}

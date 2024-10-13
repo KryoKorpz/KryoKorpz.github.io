@@ -4,15 +4,6 @@ import { mockResponse } from '../../aiConfigs/imageGenConfig.ts';
 export const handler: Handlers = {
   async POST(req, ctx: FreshContext) {
     const { model, inputs } = await req.json();
-    if (model === '@cf/runwayml/stable-diffusion-v1-5-img2img') {
-      inputs['image'] = [
-        ...new Uint8Array(
-          await Deno.readFile(
-            './static/ee5fe0b0-8865-11ef-b488-295c63c5711c.png',
-          ),
-        ),
-      ];
-    }
     if (Deno.env.get('NODE_ENV') === 'development') {
       return mockResponse();
     }
