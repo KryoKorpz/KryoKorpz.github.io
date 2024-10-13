@@ -10,6 +10,7 @@ export default function ModelSelect(props: ModelSelectProps) {
   const { models } = props;
   const [selectedModel, setSelectedModel] = useState<WorkerAiGenModel>();
   function onChange(event: any) {
+    event.preventDefault();
     const [targetModel] = models.filter((
       model,
     ) => (event.target.value === model.id));

@@ -1,5 +1,10 @@
 import { WorkerAiGenModel } from './aiConfig.ts';
-export const mockResponse = 'ee5fe0b0-8865-11ef-b488-295c63c5711c';
+export const mockResponse = async () => {
+  const file = await Deno.readFile(
+    './static/33d0c460-886c-11ef-bc9e-3389eef50ee5.png',
+  );
+  return new Response(file);
+};
 export const imageGenModels: WorkerAiGenModel[] = [
   {
     id: '@cf/lykon/dreamshaper-8-lcm',

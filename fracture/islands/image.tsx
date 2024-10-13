@@ -10,11 +10,11 @@ export default function Image(props: ImageProps) {
     return setImgSrc(props.src);
   }, [props.src]);
   return (
-    <div>
+    <>
       <img
         src={imgSrc}
         alt={'AI no worky'}
       />
-    </div>
+    </>
   );
 }
