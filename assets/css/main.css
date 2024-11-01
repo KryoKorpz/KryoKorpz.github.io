@@ -4166,9 +4166,3 @@ input, select, textarea {
 	body.is-mobile.landing #footer {
 		background-color: #1d242a;
 	}
-
-	.div-row {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-	}
