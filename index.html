@@ -19,6 +19,16 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THPBM2DW"
 					  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
+	<script>
+		function sendGTMClickEvent(linkName, category, action) {
+			window.dataLayer.push({
+				'event': 'fracture_link',
+				'linkName': linkName,
+				'eventCategory': category,
+				'eventAction': action
+			});
+		}
+	</script>
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
 
@@ -64,11 +74,11 @@
 				<!-- Two -->
 					<section id="two" class="wrapper alt style2">
 						<section class="spotlight">
-							<a target="_blank" rel="noopener noreferrer" href="https://fracture.jreichel.tech" >
+							<a target="_blank" rel="noopener noreferrer" href="https://fracture.jreichel.tech" onclick="sendGTMClickEvent('fracture image', 'navigation', 'user clicked image')">
 								<img style="padding-left: 1%" src="images/fracture-project.png" height="492" width="1246" alt="Fracture Project Screenshot"/></img>
 							</a>
 							<div class="content" >
-								<a target="_blank" rel="noopener noreferrer" href="https://fracture.jreichel.tech" >
+								<a target="_blank" rel="noopener noreferrer" href="https://fracture.jreichel.tech" onclick="sendGTMClickEvent('fracture hyperlink', 'navigation', 'user clicked hyperlink')">
 									<h2>Fracture Project</h2>
 								</a>
 								<h3>Platform to interface with AI generated images and text</h3>
